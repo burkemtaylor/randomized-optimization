@@ -49,22 +49,22 @@ public class CountOnesTest {
         ProbabilisticOptimizationProblem pop = new GenericProbabilisticOptimizationProblem(ef, odd, df);
         
         RandomizedHillClimbing rhc = new RandomizedHillClimbing(hcp);      
-        FixedIterationTrainer fit = new FixedIterationTrainer(rhc, 200);
+        FixedIterationTrainer fit = new FixedIterationTrainer(rhc, 1000);
         fit.train();
         System.out.println(ef.value(rhc.getOptimal()));
         
         SimulatedAnnealing sa = new SimulatedAnnealing(100, .95, hcp);
-        fit = new FixedIterationTrainer(sa, 200);
+        fit = new FixedIterationTrainer(sa, 1000);
         fit.train();
         System.out.println(ef.value(sa.getOptimal()));
         
         StandardGeneticAlgorithm ga = new StandardGeneticAlgorithm(20, 20, 0, gap);
-        fit = new FixedIterationTrainer(ga, 300);
+        fit = new FixedIterationTrainer(ga, 1000);
         fit.train();
         System.out.println(ef.value(ga.getOptimal()));
         
         MIMIC mimic = new MIMIC(50, 10, pop);
-        fit = new FixedIterationTrainer(mimic, 100);
+        fit = new FixedIterationTrainer(mimic, 1000);
         fit.train();
         System.out.println(ef.value(mimic.getOptimal()));
     }
